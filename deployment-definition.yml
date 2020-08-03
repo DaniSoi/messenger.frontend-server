@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messenger.frontend-server-deployment
+  labels:
+    app: messenger.frontend-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: messenger.frontend-server
+  template:
+    metadata:
+      labels:
+        app: messenger.frontend-server
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: frontend-server
+          image: danisoi/messenger.frontend-server:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 3000
+
+

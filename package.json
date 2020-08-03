@@ -1,0 +1,23 @@
+{
+  "name": "frontend-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "frontend server",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "eval $(cat .env.development) nodemon server.js",
+    "deploy": "eval $(cat .env.production) node server.js"
+  },
+  "author": "Daniel Soifer",
+  "license": "ISC"
+}
