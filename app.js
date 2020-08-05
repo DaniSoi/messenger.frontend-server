@@ -5,6 +5,7 @@ const cors = require('cors');
 const { IS_PROD } = require('./config');
 const routes = require('./routes');
 const { errorHandler500 } = require('./middleware');
+const healthCheckMiddleware = require('express-healthcheck');
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', routes.indexRouter);
+
+app.use('/healthcheck', healthCheckMiddleware());
 
 app.use(errorHandler500);
 
